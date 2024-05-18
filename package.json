@@ -2,6 +2,12 @@
   "name": "@yamaneyuta/serendipity-constants",
   "version": "0.8.0",
   "private": true,
+  "expots": {
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "node ./build.js",
     "prepare": "npm run build"
