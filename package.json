@@ -1,12 +1,8 @@
 {
-  "name": "serendipity-constants",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@yamaneyuta/serendipity-constants",
+  "version": "0.8.0",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }
