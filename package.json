@@ -3,7 +3,8 @@
   "version": "0.8.0",
   "private": true,
   "scripts": {
-    "build": "node ./build.js"
+    "build": "node ./build.js",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "deepmerge": "^4.3.1",
