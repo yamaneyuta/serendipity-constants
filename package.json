@@ -4,5 +4,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "jsonc-parser": "^3.2.1"
   }
 }
