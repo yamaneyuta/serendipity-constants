@@ -1,2 +1,188 @@
 {
+	// 選択可能なログレベル一覧(サーバー、クライアント共通)
+	// ※インデックスが小さいほど情報量が多いようにすること
+	"logLevels": [
+		"debug",
+		"info",
+		"warn",
+		"error"
+	],
+	"scriptHandleName": {
+		/*
+		 * 各値は『src/admin/index.js』等の文字列のMD5ハッシュ値。
+		 * 2023/9/2時点でi18nフォルダ内での変換で一律に『src/index.js』をソースとしているが、
+		 * 参照元を正しくコントロールできた場合、MD5のハッシュ値が付与されるため、予めMD5の値をhandleNameとして使用する。
+		 */
+		"admin": "634a6148a811f83a1bbd4d2f475a8c91",
+		"block": "6e7ba80738b3f81da8c4f83d13e6a344",
+		"view": "5300733318314abc7552f68adb4dd9b7"
+	},
+	"cronActionName": {
+		"crawlPurchasedEventLog": "serendipity_crawl_purchased_event_log"
+	},
+	// cronの実行間隔(分)
+	"cronIntervalMin": {
+		"crawlPurchasedEventLog": 5
+	},
+	// 管理画面のURLにも用いられるslug
+	"slug": {
+		"root": "cornix-serendipity-admin",
+		"settings": "cornix-serendipity-settings",
+		"development": "cornix-serendipity-development",
+		//	TODO: 以下削除
+		"reportSettings": "cornix-serendipity-report-settings",
+		"salesHistory": "cornix-serendipity-sales-history",
+		"debug": "cornix-serendipity-debug"
+	},
+	// div要素のID設定
+	"divId": {
+		// アクション名`wp_rest`のnonceが格納されるinput要素のID
+		"nonceId": "b2e7bcb8-1419-4d6e-8315-45278c5a6079",
+		// 管理画面用のID
+		"settingsPage": "d5df3f39-9b7a-46bf-966e-2033606d6db9", //	設定ページ
+		"developmentPage": "a443f536-df46-41c9-b3cb-8253b6630ed5", //	開発者用ページ
+		// TODO: 以下削除
+		"reportSettingsPage": "e1fc25f6-b484-4105-9e51-fd9697b80d02",
+		"salesHistoryPage": "c752a7cf-14f0-40c2-bc6a-80799d28f849",
+		"debugPage": "d75bcf4e-ac96-4c9f-9c64-a2a5842ca812"
+	},
+	// div要素のclass設定
+	"className": {
+		"widget": "ae6cefc4-82d4-4220-840b-d74538ea7284"
+	},
+	"affiliateWalletUrlParameterKey": "afwlt",
+	// PHPから出力する、javascriptの変数名
+	"phpVarName": {
+		"common": "php_common_var_5f455b05"
+	},
+	"restNamespaceCore": "serendipity",
+	// このプラグイン用の設定をDBのoptionsテーブルに保存する時のオプション名
+	// ※ 他のプラグインと競合しないようにすること
+	"optionsKey": {
+		// TODO: 以下、OptionKey.phpに移動して削除
+		// プラグインのバージョン。プラグインアップデート時に使用する。
+		"pluginVersion": "serendipity_plugin_version",
+		// データベースのバージョン。プラグインアップデート時に使用する。
+		"databaseVersion": "serendipity_database_version",
+		// nonceを生成する際に使用するsalt
+		"nonceSalt": "serendipity_nonce_salt",
+		// ログレベル
+		// format: {
+		//     "server": [LOG_LEVEL],	
+		//     "client": [LOG_LEVEL]
+		// }
+		// LOG_LEVEL: string (e.g. "debug", "info", "warn", "error")
+		"logLevelSettings": "serendipity_log_level_settings",
+		// このプラグインが使用するネットワークタイプ
+		// 
+		// format: string ("mainnet" or "testnet" or "privatenet)
+		"activeNetworkType": "serendipity_active_network_type",
+		// サイト所有者が利用規約に同意した時の情報
+		//
+		// format: {
+		//     "version": [TERMS_VERSION],
+		//     "message": [MESSAGE]
+		//     "signature": [SIGNATURE]
+		// }
+		// TERMS_VERSION: string (e.g. "1")
+		// MESSAGE: string (e.g. "I agree to the terms of service v1.")
+		// SIGNATURE: string ("0x...")
+		"siteOwnerAgreedTermsInfo": "serendipity_site_owner_agreed_terms_info",
+		// 現在使用している署名用ウォレットの情報
+		"primarySigner": "serendipity_primary_signer_info",
+		// RPC URLを初回登録したときのブロック番号
+		"initialBlockNumbers": "serendipity_initial_block_numbers",
+		// Purchaseイベントログを確認した最新のブロック番号
+		"lastCrawlPurchasedEventLogBlockNumbers": "serendipity_last_crawl_purchased_event_log_block_numbers",
+		// チェーンIDに対するRPC URL情報
+		//
+		// format: {
+		// 	"1": "https://xxxxx",
+		// 	"137": "https://xxxxx"
+		// }
+		// ※ RPC URLが登録されていないものはキー自体が存在しない
+		"rpcUrls": "serendipity_rpc_urls",
+		// 販売可能なチェーンID一覧
+		"sellableChainIds": "serendipity_sellable_chain_ids",
+		// 販売可能な通貨シンボル一覧
+		"payableSymbols": "serendipity_payable_symbols",
+		//	待機するブロック数
+		"confirmations": "serendipity_confirmations"
+	},
+	"transientsKey": {
+		// コントラクトから取得した支払可能な通貨一覧(末尾にチェーンIDが付与される)
+		"getPayableSymbolsInfoBase": "serendipity_get_payable_symbols_info_",
+		// Oracleから取得したレート情報(通貨毎に保存するため末尾にシンボルが付与される)
+		"getOracleLatestDataBase": "serendipity_get_oracle_latest_data_"
+	},
+	"dirName": {
+		// ユーザーが後から作成したファイル等を保管するディレクトリ名。
+		// プラグインアップデート時に削除されないように、プラグインディレクトリ外に作成する。
+		"userAssets": "cornix-serendipity-assets"
+	},
+	"restErrorCode": {
+		"couldNotConfirmReceipt": "{2B7E1E29-DCF9-4F27-A433-26725E75FBE3}"
+	},
+	"contract": {
+		// アフィリエイト報酬率の小数点以下桁数。コントラクト内の定数と一致させること。
+		"affiliateRatioDecimals": 6,
+		// トークンの種別(定数)
+		"TOKEN_TYPE": {
+			// 未定義(0x00)
+			"NONE": 0,
+			// ネイティブトークン(0x01)
+			"NATIVE": 1,
+			// ERC20トークン(0x01 << 1)
+			"ERC20": 2
+		}
+	},
+	"networks": {
+		"mainnet": {
+			// 1: Ethereum, 56: BSC, 100: xDai, 137: Polygon(Matic), 1101: Polygon zkEVM,
+			// 43114(Avalanche),
+			"chainIds": [
+				1,
+				137
+			], //	コントラクトがデプロイ済みのチェーンID一覧を記載
+			"priceConversionChainId": 1 // 価格変換を行うチェーンID
+		},
+		"testnet": {
+			// 3: Ropsten, 4: Rinkeby, 5: Goerli, 42: Kovan, 77: Sokol(xDai),
+			// 97: BSC Testnet, 17000: Holesky, 43113: Fuji(Avalanche), 80001: Mumbai(Polygon), 
+			// 11155111: Sepolia
+			"chainIds": [
+				11155111
+			],
+			"priceConversionChainId": 11155111
+		},
+		"privatenet": {
+			// 31337: Hardhat, 5777: Ganache
+			"chainIds": [
+				31337,
+				5777
+			],
+			"priceConversionChainId": 31337
+		}
+	},
+	"default": {
+		// デフォルトのサーバーログレベル。
+		// 調査時にある程度ログがある方がよいので、デフォルトはinfoにしておく。
+		"logLevel": {
+			"server": "info",
+			"client": "info"
+		},
+		"confirmations": {
+			// Privatenet
+			"31337": 1,
+			"5777": 1
+		}
+	},
+	"database": {
+		// テーブル名の前に付与する文字列。さらに`wp_`等が前に付与される。
+		"tableNamePrefix": "cornix_serendipity_"
+	},
+	"prefix": {
+		// WordPressのoptionsテーブルに保存するキー名の前に付与する文字列。
+		"optionKey": "serendipity_"
+	}
 }
