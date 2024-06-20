@@ -1,0 +1,30 @@
+// バックエンドとフロントエンド、異なるフロントエンド(管理画面や投稿画面など)等、
+// プロジェクトまたは言語をまたいで共通の定数を定義する
+//
+// ファイルフォーマット:
+// {
+//    "constants": [ // 固定(変更不可)
+//        {
+//            "keys": ["backend", "frontend/admin"],      // どこでこの値を使用するかを指定(`backend`, `frontend/admin`, `frontend/edit`, `frontend/view`のいずれかを複数指定)
+//            "data": { // 定数の値
+//                "xxx": "https://example.com",
+//                ...
+//            }
+//        },
+//        ...
+//    ]
+// }
+{
+    "constants": [
+        {
+            // すべての画面で共通の定数
+            "keys": ["backend", "frontend/admin", "frontend/edit", "frontend/view"],
+            "data": {
+                "phpVarName": {
+                    // REST API関連の情報が格納されるグローバル変数の名前
+                    "rest": "php_var_rest_20792bdd"
+                }
+            }
+        }
+    ]
+}
