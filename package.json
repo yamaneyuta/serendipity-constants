@@ -11,7 +11,7 @@
   "scripts": {
     "_update:package": "rm -rf node_modules package-lock.json ; npm i",
     "_update:devcontainer": "dev-update devcontainer",
-    "build": "node ./build.js",
+    "build": "npm run clean && node ./build.js",
     "clean": "rm -rf dist",
     "prepare": "npm run build"
   },
