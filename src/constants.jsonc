@@ -5,7 +5,7 @@
 // {
 //    "constants": [ // 固定(変更不可)
 //        {
-//            "keys": ["backend", "frontend/admin"],      // どこでこの値を使用するかを指定(`backend`, `frontend/admin`, `frontend/edit`, `frontend/view`のいずれかを複数指定)
+//            "keys": ["backend", "frontend/admin"],      // どこでこの値を使用するかを指定(`backend`, `frontend/lib`, `frontend/admin`, `frontend/edit`, `frontend/view`のいずれかを複数指定)
 //            "data": { // 定数の値
 //                "xxx": "https://example.com",
 //                ...
@@ -18,7 +18,7 @@
     "constants": [
         {
             // すべての画面で共通の定数
-            "keys": ["backend", "frontend/admin", "frontend/edit", "frontend/view"],
+            "keys": ["backend", "frontend/lib"],
             "data": {
                 "phpVarName": {
                     // REST API関連の情報が格納されるグローバル変数の名前
