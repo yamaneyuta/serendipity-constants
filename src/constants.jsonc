@@ -25,6 +25,52 @@
                     "rest": "php_var_rest_20792bdd"
                 }
             }
+        },
+        {
+            // バックエンド用の定数
+            "keys": ["backend"],
+            "data": {
+                // 法定通貨の情報
+                "legalCurrencies": [
+                    // 小数点以下桁数: https://ja.wikipedia.org/wiki/ISO_4217
+                    { "symbol": "AUD", "decimals": 2 },
+                    { "symbol": "EUR", "decimals": 2 },
+                    { "symbol": "GBP", "decimals": 2 },
+                    { "symbol": "USD", "decimals": 2 },
+                    { "symbol": "JPY", "decimals": 0 }
+                ],
+                // 暗号資産の情報
+                "cryptoAssets": [
+                    // [Mainnet]
+                    // Native symbols
+                    { "chainId": 1, "symbol": "ETH", "decimals": 18, "address": null },
+                    // ERC20 symbols
+
+                    // [Sepolia]
+                    // Native symbols
+                    { "chainId": 11155111, "symbol": "SepoliaETH", "decimals": 18, "address": null }
+                ],
+
+                "oracles": [
+                    // `XXX / USD`のレート変換を行うためのコントラクトアドレス
+
+                    // [Mainnet]
+                    { "chainId": 1, "symbol": "AUD", "address": "0x77F9710E7d0A19669A13c055F62cd80d313dF022" }, // https://data.chain.link/feeds/ethereum/mainnet/aud-usd
+                    { "chainId": 1, "symbol": "ETH", "address": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419" }, // https://data.chain.link/feeds/ethereum/mainnet/eth-usd
+                    { "chainId": 1, "symbol": "EUR", "address": "0xb49f677943BC038e9857d61E7d053CaA2C1734C1" }, // https://data.chain.link/feeds/ethereum/mainnet/eur-usd
+                    { "chainId": 1, "symbol": "GBP", "address": "0x5c0Ab2d9b5a7ed9f470386e82BB36A3613cDd4b5" }, // https://data.chain.link/feeds/ethereum/mainnet/gbp-usd
+                    { "chainId": 1, "symbol": "JPY", "address": "0xBcE206caE7f0ec07b545EddE332A47C2F75bbeb3" }, // https://data.chain.link/feeds/ethereum/mainnet/jpy-usd
+
+                    // [Sepolia]
+                    // https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&page=1#sepolia-testnet
+                    { "chainId": 11155111, "symbol": "AUD", "address": "0xB0C712f98daE15264c8E26132BCC91C40aD4d5F9" },
+                    { "chainId": 11155111, "symbol": "ETH", "address": "0x694AA1769357215DE4FAC081bf1f309aDC325306" },
+                    { "chainId": 11155111, "symbol": "EUR", "address": "0x1a81afB8146aeFfCFc5E50e8479e826E7D55b910" },
+                    { "chainId": 11155111, "symbol": "GBP", "address": "0x91FAB41F5f3bE955963a986366edAcff1aaeaa83" },
+                    { "chainId": 11155111, "symbol": "JPY", "address": "0x8A6af2B75F23831ADc973ce6288e5329F63D86c6" }
+                    
+                ]
+            }
         }
     ]
 }
