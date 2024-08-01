@@ -12,7 +12,8 @@
     "build": "npm run clean && node ./build.js",
     "clean": "rm -rf dist",
     "prepare": "npm run build",
-    "update:package": "npx npm-check-updates -u --target minor"
+    "update:package": "npx npm-check-updates -u --target minor",
+    "release": "npx release-it"
   },
   "devDependencies": {
     "deepmerge": "^4.3.1",
